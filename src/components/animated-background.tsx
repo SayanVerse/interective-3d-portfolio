@@ -13,6 +13,12 @@ import { useRouter } from "next/navigation";
 
 gsap.registerPlugin(ScrollTrigger);
 
+const KEYS_TO_HIDE = [
+  "ts", "react", "vue", "nextjs", "tailwind", "express", "postgres",
+  "mongodb", "git", "github", "prettier", "npm", "firebase",
+  "wordpress", "linux", "docker", "nginx", "vim", "vercel"
+];
+
 const STATES = {
   hero: {
     desktop: {
@@ -144,7 +150,7 @@ const AnimatedBackground = () => {
     } else {
       if (!selectedSkill || selectedSkill.name !== e.target.name) {
         const skill = SKILLS[e.target.name as SkillNames];
-        setSelectedSkill(skill);
+        if (skill) setSelectedSkill(skill);
       }
     }
   };
@@ -352,9 +358,11 @@ const AnimatedBackground = () => {
     splineApp.addEventListener("keyDown", (e) => {
       if (!splineApp) return;
       const skill = SKILLS[e.target.name as SkillNames];
-      if (skill) setSelectedSkill(skill);
-      splineApp.setVariable("heading", skill.label);
-      splineApp.setVariable("desc", skill.shortDescription);
+      if (skill) {
+        setSelectedSkill(skill);
+        splineApp.setVariable("heading", skill.label);
+        splineApp.setVariable("desc", skill.shortDescription);
+      }
     });
     splineApp.addEventListener("mouseHover", handleMouseHover);
   };
@@ -491,7 +499,7 @@ const AnimatedBackground = () => {
     const frame1 = splineApp?.findObjectByName("frame-1");
     const frame2 = splineApp?.findObjectByName("frame-2");
     if (!frame1 || !frame2 || !framesParent)
-      return { start: () => {}, stop: () => {} };
+      return { start: () => { }, stop: () => { } };
 
     let interval: NodeJS.Timeout;
     const start = () => {
@@ -517,7 +525,7 @@ const AnimatedBackground = () => {
     return { start, stop };
   };
   const getKeycapsAnimation = () => {
-    if (!splineApp) return { start: () => {}, stop: () => {} };
+    if (!splineApp) return { start: () => { }, stop: () => { } };
 
     let tweens: gsap.core.Tween[] = [];
     const start = () => {
@@ -525,6 +533,7 @@ const AnimatedBackground = () => {
       Object.values(SKILLS)
         .sort(() => Math.random() - 0.5)
         .forEach((skill, idx) => {
+          if (!skill) return;
           const keycap = splineApp.findObjectByName(skill.name);
           if (!keycap) return;
           const t = gsap.to(keycap?.position, {
@@ -542,6 +551,7 @@ const AnimatedBackground = () => {
     const stop = () => {
       removePrevTweens();
       Object.values(SKILLS).forEach((skill) => {
+        if (!skill) return;
         const keycap = splineApp.findObjectByName(skill.name);
         if (!keycap) return;
         const t = gsap.to(keycap?.position, {
@@ -559,6 +569,21 @@ const AnimatedBackground = () => {
     };
     return { start, stop };
   };
+  /* 
+   * Restoring keys as "static" (decorative) elements as requested.
+   * Note: Removing specific 3D icons requires access to the .spline source file structure 
+   * or guessing child object names (e.g., 'icon'). 
+   */
+  // useEffect(() => {
+  //   if (!splineApp) return;
+  //   KEYS_TO_HIDE.forEach((keyName) => {
+  //     const obj = splineApp.findObjectByName(keyName);
+  //     if (obj) {
+  //       obj.visible = false;
+  //     }
+  //   });
+  // }, [splineApp]);
+
   return (
     <>
       <Suspense fallback={<div>Loading...</div>}>

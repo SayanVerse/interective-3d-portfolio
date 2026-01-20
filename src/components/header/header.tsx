@@ -47,7 +47,8 @@ const Header = ({ loader }: HeaderProps) => {
       >
       </div> */}
       <div className={cn(styles.bar, "flex items-center justify-between")}>
-        <Link href="/" className="flex items-center justify-center">
+        <Link href="/" className="flex items-center justify-center gap-2">
+          <img src="/assets/logo.png" alt="logo" className="w-8 h-8 rounded-full" />
           <Button variant={"link"} className="text-md">
             {config.author}
           </Button>
@@ -75,9 +76,8 @@ const Header = ({ loader }: HeaderProps) => {
             </motion.p>
           </div>
           <div
-            className={`${styles.burger} ${
-              isActive ? styles.burgerActive : ""
-            }`}
+            className={`${styles.burger} ${isActive ? styles.burgerActive : ""
+              }`}
           ></div>
         </Button>
       </div>
