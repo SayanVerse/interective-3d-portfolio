@@ -26,7 +26,7 @@ export async function POST(req: Request) {
       error: zodError,
     } = Email.safeParse(body);
     if (!zodSuccess)
-      return Response.json({ error: zodError?.message }, { status: 400 });
+      return Response.json({ error: zodError.errors[0].message }, { status: 400 });
 
     const { data: resendData, error: resendError } = await resend.emails.send({
       from: "Porfolio <onboarding@resend.dev>",

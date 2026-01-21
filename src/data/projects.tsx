@@ -262,12 +262,23 @@ const projects: Project[] = [
     id: "3d-portfolio",
     category: "Portfolio",
     title: "Interactive 3D Portfolio",
-    src: "/assets/nav-link-previews/landing.png",
-    screenshots: [],
-    live: "#",
-    github: "#",
+    src: "/assets/projects-screenshots/myportfolio/landing.png",
+    screenshots: [
+      "/assets/projects-screenshots/myportfolio/landing.png",
+      "/assets/projects-screenshots/myportfolio/navbar.png",
+      "/assets/projects-screenshots/myportfolio/project.png",
+      "/assets/projects-screenshots/myportfolio/projects.png",
+    ],
+    live: "https://imsayann.netlify.app",
+    github: "https://github.com/SayanVerse/interective-3d-portfolio.git",
     skills: {
-      frontend: [PROJECT_SKILLS.next, PROJECT_SKILLS.spline, PROJECT_SKILLS.tailwind],
+      frontend: [
+        PROJECT_SKILLS.next,
+        PROJECT_SKILLS.ts,
+        PROJECT_SKILLS.tailwind,
+        PROJECT_SKILLS.spline,
+        PROJECT_SKILLS.framerMotion,
+      ],
       backend: [],
     },
     get content() {
@@ -279,11 +290,7 @@ const projects: Project[] = [
           <TypographyP className="font-mono my-4">
             Currently developing with curiosity! This is the site you are viewing right now, featuring interactive 3D elements and smooth animations.
           </TypographyP>
-          <div className="flex flex-col md:flex-row items-center justify-center gap-3 my-3 mb-8">
-            <Button variant={"secondary"} size={"sm"} disabled>
-              Demo Coming Soon
-            </Button>
-          </div>
+          <ProjectsLinks live={this.live} repo={this.github} />
         </div>
       );
     },
