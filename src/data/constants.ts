@@ -176,7 +176,7 @@ export const SKILLS: Partial<Record<SkillNames, Skill>> = {
     id: 14,
     name: "github",
     label: "GitHub",
-    shortDescription: "Will learn soon...",
+    shortDescription: "sliding into those pull requests, IYKYK!",
     color: "#000000",
     icon: ""
   },
