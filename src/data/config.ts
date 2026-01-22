@@ -20,7 +20,7 @@ const config = {
   ],
   author: "Sayan Maiti",
   email: "sayan.official.2024@gmail.com",
-  site: "https://sayanmaiti.portfolio", // Placeholder
+  site: "https://imsayann.netlify.app",
 
   get ogImg() {
     return this.site + "/assets/seo/og-image.png";

@@ -16,6 +16,7 @@ import SocketContextProvider from "@/contexts/socketio";
 import RemoteCursors from "@/components/realtime/remote-cursors";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(config.site),
   title: config.title,
   description: config.description.long,
   keywords: config.keywords,
