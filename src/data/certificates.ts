@@ -44,4 +44,22 @@ export const certificates: Certificate[] = [
         link: "https://www.hackerrank.com/certificates/6ac58a65f3c1",
         image: "/assets/projects-screenshots/hackerrank_java.jpg",
     },
+    {
+        id: "ardent-internship-ds-ai-ml",
+        title: "Industrial Internship on Data Science Artificial Intelligence and Machine learning",
+        issuer: "ARDENT COMPUTECH PVT LTD",
+        date: "Aug 2025",
+        credentialId: "ARDENT/171626",
+        link: "https://drive.google.com/file/d/143dZrLxApdnp4howxqE0Nz7RwFTHBynp/view",
+        image: "/assets/projects-screenshots/ardentinternships_logo (1).jpg",
+    },
+    {
+        id: "ardent-training-ds-ai-ml",
+        title: "Industrial Training on Data Science Artificial Intelligence and Machine learning using Python",
+        issuer: "ARDENT COMPUTECH PVT LTD",
+        date: "Aug 2025",
+        credentialId: "ARDENT/171750",
+        link: "https://drive.google.com/file/d/1hW0UXDJV-1bGLaWmTW1OamWrGTIVykdw/view",
+        image: "/assets/projects-screenshots/ardentinternships_logo (1).jpg",
+    },
 ];
